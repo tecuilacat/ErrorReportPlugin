@@ -1,24 +1,41 @@
 package com.github.tecuilacat.commons;
 
+import com.github.tecuilacat.commons.api.Generator;
 import org.gradle.api.DefaultTask;
+import org.gradle.api.tasks.Input;
 import org.gradle.api.tasks.TaskAction;
 
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.util.List;
 
 public class GenerateErrorReport extends DefaultTask {
 
+    private String input;
+    private List<String> modules;
+
+    @Input
+    public String getInput() {
+        return input;
+    }
+
+    public void setInput(String input) {
+        this.input = input;
+    }
+
+    @Input
+    public List<String> getModules() {
+        return modules;
+    }
+
+    public void setModules(List<String> modules) {
+        this.modules = modules;
+    }
+
     @TaskAction
     public void generateReport() {
-        File reportFile = new File(getProject().getBuildDir(), "error-report.html");
-        try (FileWriter writer = new FileWriter(reportFile)) {
-            writer.write("<html><body><h1>Error Report</h1><p>No errors found!</p></body></html>");
-            System.out.println("Generated error report: " + reportFile.getAbsolutePath());
-        } catch (IOException e) {
-            System.out.println("HAT NICHT GEKLAPPT");
-            throw new RuntimeException("Error generating report", e);
-        }
+        getLogger().lifecycle("Generating error report from input: " + input);
+        getLogger().lifecycle("Using modules: " + modules);
+        Generator.generateErrorReport(new File(getProject().getBuildDir(), "error-report.html"));
     }
 
 }

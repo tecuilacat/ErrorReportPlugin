@@ -23,6 +23,8 @@ dependencies {
     api gradleApi()
     implementation gradleApi()
     implementation localGroovy()
+    testImplementation gradleTestKit()
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.11.2'
 }
 
 publishing {
@@ -36,4 +38,8 @@ publishing {
             url = uri("https://jitpack.io")
         }
     }
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
 }
