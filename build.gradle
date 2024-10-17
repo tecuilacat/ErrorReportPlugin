@@ -3,12 +3,12 @@ plugins {
     id 'maven-publish'
 }
 
-group = 'com.github.tecuilacat.errorreportplugin'
+group = 'de.github.tecuilacat.errorreportplugin'
 
 gradlePlugin {
     plugins {
         create("errorReportPlugin") {
-            id = "de.github.tecuilacat.error-report-plugin"
+            id = "de.github.tecuilacat.errorreportplugin"
             implementationClass = "com.github.tecuilacat.commons.ErrorReportPlugin"
         }
     }
