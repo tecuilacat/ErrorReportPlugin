@@ -1,0 +1,24 @@
+plugins {
+    id 'java-gradle-plugin'
+}
+
+group = 'com.github.tecuilacat.commons'
+version = '1.0-SNAPSHOT'
+
+gradlePlugin {
+    plugins {
+        create("errorReportPlugin") {
+            id = "de.github.tecuilacat.error-report-plugin"
+            implementationClass = "com.github.tecuilacat.commons.ErrorReportPlugin"
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation gradleApi()
+    implementation localGroovy()
+}
