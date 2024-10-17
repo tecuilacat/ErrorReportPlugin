@@ -1,8 +1,8 @@
-rootProject.name = 'ErrorReportPlugin'
-
 pluginManagement {
     repositories {
         gradlePluginPortal()
         maven { url "https://jitpack.io" }
     }
 }
+
+rootProject.name = 'ErrorReportPlugin'
