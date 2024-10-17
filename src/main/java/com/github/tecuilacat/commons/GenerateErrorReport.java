@@ -18,17 +18,9 @@ public class GenerateErrorReport extends DefaultTask {
         return input;
     }
 
-    public void setInput(String input) {
-        this.input = input;
-    }
-
     @Input
     public List<String> getModules() {
         return modules;
-    }
-
-    public void setModules(List<String> modules) {
-        this.modules = modules;
     }
 
     @TaskAction
