@@ -23,6 +23,10 @@ dependencies {
     api gradleApi()
     implementation gradleApi()
     implementation localGroovy()
+
+    compileOnly 'org.projectlombok:lombok:1.18.34'
+    annotationProcessor 'org.projectlombok:lombok:1.18.34'
+
     testImplementation gradleTestKit()
     testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.11.2'
 }
