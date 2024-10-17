@@ -1,23 +1,30 @@
 package com.github.tecuilacat.commons;
 
 import com.github.tecuilacat.commons.api.Generator;
+import com.github.tecuilacat.commons.api.TaskStarter;
 import lombok.Setter;
 import org.gradle.api.DefaultTask;
 import org.gradle.api.tasks.Input;
 import org.gradle.api.tasks.TaskAction;
 
-import java.io.File;
 import java.util.List;
 
 @Setter
 public class GenerateErrorReport extends DefaultTask {
 
-    private String input;
+    private String serverUrl;
+    private List<String> members;
     private List<String> modules;
+    private List<String> logDirectories;
 
     @Input
-    public String getInput() {
-        return input;
+    public String getServerUrl() {
+        return serverUrl;
+    }
+
+    @Input
+    public List<String> getMembers() {
+        return members;
     }
 
     @Input
@@ -25,11 +32,18 @@ public class GenerateErrorReport extends DefaultTask {
         return modules;
     }
 
+    @Input
+    public List<String> getLogDirectories() {
+        return logDirectories;
+    }
+
     @TaskAction
     public void generateReport() {
-        getLogger().lifecycle("Generating error report from input: " + input);
-        getLogger().lifecycle("Using modules: " + modules);
-        Generator.generateErrorReport(new File(getProject().getBuildDir(), "error-report.html"));
+        getLogger().lifecycle("Generating error report from input: " + serverUrl);
+        getLogger().lifecycle("Generating error report from input: " + members);
+        getLogger().lifecycle("Generating error report from input: " + modules);
+        getLogger().lifecycle("Generating error report from input: " + logDirectories);
+        Generator.generateErrorReport(new TaskStarter(serverUrl, members, modules, logDirectories));
     }
 
 }
