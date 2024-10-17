@@ -15,6 +15,16 @@ gradlePlugin {
     }
 }
 
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    api gradleApi()
+    implementation gradleApi()
+    implementation localGroovy()
+}
+
 publishing {
     publications {
         mavenJava(MavenPublication) {
@@ -26,14 +36,4 @@ publishing {
             url = uri("https://jitpack.io")
         }
     }
-}
-
-
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    implementation gradleApi()
-    implementation localGroovy()
 }
